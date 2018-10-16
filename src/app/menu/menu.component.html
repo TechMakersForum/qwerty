@@ -1,0 +1,82 @@
+<!-- <div class="headerOne">
+    <div class="header">
+      <div class="header-inner container flex flex-column flex-row-m flex-space-between-m">
+  
+        <div class="companyLogo"></div>
+        <input type="checkbox" id="navigation-toggle-checkbox" name="navigation-toggle-checkbox" class="navigation-toggle-checkbox sr">
+        <label for="navigation-toggle-checkbox" class="navigation-toggle-label" onclick="">
+          <span class="navigation-toggle-label-inner">
+            <span class="sr">Navigation</span>
+          </span>
+        </label>
+        <div class="navigation">
+          <ul class="navigation-menu">
+            <li class="navigation-item"><a routerLink="">About</a></li>
+  
+            <li class="navigation-item"><a routerLink="">Ingredient</a></li>
+            <li class="navigation-item"><a routerLink="/menu">Menu</a></li>
+            <li class="navigation-item"><a routerLink="">Reviews</a></li>
+            <li class="navigation-item"><a routerLink="">Gallery</a></li>
+            <li class="navigation-item"><a routerLink="">Reservations</a></li>
+          </ul>
+          <ul class="navigation-menu">
+            <div id="fortag">
+              <li class="navigation-item"><a>Book Now</a></li>
+            </div>
+  
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
+<div class="headercontentavoid food-menu-block-inner container">
+  <br>
+  <h2 class="heading">Our Menu</h2>
+  <div class="maindiv">
+  <div class="collapseSeperate">
+  <collapsible-list [type]="'accordion'" style="border: none;">
+    <collapsible-list-item class="single-accordian" *ngFor="let header of objectKeys(allDataContent);">
+      <collapsible-header class="waves-effect" (click)="rotateArrow= !rotateArrow;">
+        {{header}}
+        <!-- <i class="glyphicon glyphicon-menu-right" [ngClass]="rotateArrow?'rotateArrow':'null'"></i> -->
+      </collapsible-header>
+      <collapsible-body [expanded]="rotateArrow && listedRole == 4" [ngClass]="rotateArrow && listedRole == 4 ?'single-accordion collapsed':'single-accordion'">
+        <div class="accordion-content default">
+          <div class="ac-recommendation-status">
+            <ul class="ac-employees-unsorted" *ngIf="allDataContent">
+              <li class="removeDot" *ngFor="let user of allDataContent[header];let index=index">   
+                <h5 class="textHover">{{user}}</h5>
+                <input type="checkbox" class="option-input checkbox"/>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </collapsible-body>
+    </collapsible-list-item>
+  </collapsible-list>
+</div>
+<!-- <div class="collapseSeperate">
+  <collapsible-list [type]="'accordion'" style="border: none;">
+    <collapsible-list-item class="single-accordian" *ngFor="let header of objectKeys(allDataContent);">
+      <collapsible-header class="waves-effect" (click)="rotateArrow= !rotateArrow;">
+        {{header}}
+        <i class="glyphicon glyphicon-menu-right" [ngClass]="rotateArrow?'rotateArrow':'null'"></i>
+      </collapsible-header>
+      <collapsible-body [expanded]="rotateArrow && listedRole == 4" [ngClass]="rotateArrow && listedRole == 4 ?'single-accordion collapsed':'single-accordion'">
+        <div class="accordion-content default">
+          <div class="ac-recommendation-status">
+            <ul class="ac-employees-unsorted" *ngIf="allDataContent">
+              <li class="removeDot" *ngFor="let user of allDataContent[header];let index=index">   
+                <h5 class="textHover">{{user}}</h5>
+                <input type="checkbox" class="option-input checkbox"/>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </collapsible-body>
+    </collapsible-list-item>
+  </collapsible-list>
+</div> -->
+</div>
+</div>
