@@ -2,7 +2,8 @@
         <div class="header">
                 <div class="header-inner container flex flex-column flex-row-m flex-space-between-m">
 
-                        <div class="companyLogo"></div>
+                        
+                          <a  href="#home"><div class="companyLogo"></div></a>
                         <input type="checkbox" id="navigation-toggle-checkbox" name="navigation-toggle-checkbox" class="navigation-toggle-checkbox sr">
                         <label for="navigation-toggle-checkbox" class="navigation-toggle-label" onclick="">
                                 <span class="navigation-toggle-label-inner">
@@ -11,12 +12,14 @@
                         </label>
                         <div class="navigation">
                                 <ul class="navigation-menu">
-                                        <li class="navigation-item"><a href="#about">About</a></li>
-                                        <li class="navigation-item"><a href="#ingredients">Ingredient</a></li>
-                                        <li class="navigation-item"><a routerLink="/menu">Menu</a></li>
-                                        <li class="navigation-item"><a routerLink="/gallery">Gallery</a></li>
-                                        <li class="navigation-item"><a href="#reservations">Reservations</a></li>
-                                        <li class="navigation-item"><a href="#reviews">Reviews</a></li>
+                                        <!-- <li class="navigation-item"><a routerLink="" fragment="about">About</a></li> -->
+                                        
+                                        <li class="navigation-item cursor-pointer"><a (click)="_homeService.internalRoute('','about');">About</a></li>
+                                        <li class="navigation-item cursor-pointer"><a (click)="_homeService.internalRoute('','services');">Our Services</a></li>
+                                        <li class="navigation-item cursor-pointer"><a routerLink="/menu">Menu</a></li>
+                                        <li class="navigation-item cursor-pointer"><a routerLink="/gallery">Gallery</a></li>
+                                        <li class="navigation-item cursor-pointer"><a (click)="_homeService.internalRoute('','reservations');">Reservations</a></li>
+                                        <li class="navigation-item cursor-pointer"><a (click)="_homeService.internalRoute('','reviews');">Reviews</a></li>
                                 </ul>
 
                         </div>
@@ -27,14 +30,14 @@
 <div class="footer">
         <div class="footer-inner container">
           <div class="row-m">
-            <div class="footer-column col-4-l">
+            <!-- <div class="footer-column col-4-l">
               <h3 class="footer-heading">About us</h3>
               <p>
                 We customize each event through remarkable design and delectable cuisine.By making
           better choices consistently, and supporting local businesses, we bring more than just taste and
           presentation to the plate, we ensure a future rich in culinary excellence.
               </p>
-            </div>
+            </div> -->
             <div class="footer-column col-4-l">
               <h3 class="footer-heading">Opening Hours</h3>
               <p>
@@ -47,6 +50,12 @@
                 <li><span class="payment payment-american-express"><span class="sr">American Express</span></span></li>
                 <li><span class="payment payment-paypal"><span class="sr">PayPal</span></span></li>
               </ul>
+            </div>
+
+            <div class="footer-column col-4-l">
+              <h3 class="footer-heading">Accreditation</h3>
+              <img class="img-fluid certificate-image feature-image-1" src="../assets/img/certificate_2.png" alt="Wheat">
+              <img class="img-fluid certificate-image feature-image-1" style="width: 150px;" src="../assets/img/certificate_1.png" alt="Wheat">
             </div>
       
             <div class="footer-column col-4-l">

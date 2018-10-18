@@ -17,7 +17,7 @@ import { GalleryComponent } from './gallery/gallery.component';
     HomeComponent,
     MenuComponent,
     ErrorComponent,
-    GalleryComponent
+    GalleryComponent,
   ],
   imports: [
     BrowserModule,

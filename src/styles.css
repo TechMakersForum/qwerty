@@ -123,7 +123,10 @@
 }
 
 .headerOne {
-  /* opacity: .7; */
+  width: 100vw;
+  opacity: .7;
+  z-index: 99999;
+  position: fixed;
   background-color: #1c1f26ba;
 }
 
@@ -141,6 +144,7 @@
 }
 
 .companyLogo {
+  cursor: pointer;
   background-image: url(../src/assets/img/varnamlogo1.png);
   width: 159px;
   height: 50px;
@@ -1761,8 +1765,11 @@ h2, h3, h4, h5, h6 {
   padding-right: 30px
 }
 
-.about-block .about-chef {
+.about-block  {
   margin-top: 20px
+}
+.about-chef {
+  margin-top: -88px
 }
 
 .about-block.active .about-block-content h2, .about-block.active .about-block-content p, .ingredients-block.active {
@@ -1809,7 +1816,8 @@ h2, h3, h4, h5, h6 {
   border: 5px solid #494d4e;
   border-radius: 100%;
   width: 100px;
-  height: 100px
+  height: 100px;
+  object-fit: cover;
 }
 
 .ingredients-block.active .feature-box .feature-image-1 {
@@ -3053,5 +3061,12 @@ h2, h3, h4, h5, h6 {
   z-index: 9999999;
 }
 .headercontentavoid{
-  /* padding-top: 95px!important; */
+  /* padding-top: 100px!important; */
+}
+.setBaseBottom{
+  padding-top: 100px!important;
+
+}
+.cursor-pointer{
+ cursor: pointer;
 }
