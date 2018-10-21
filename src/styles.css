@@ -133,7 +133,7 @@
 .cder {
   /* background-color: #3a3a3a; */
   height: 100vh;
-  background-image: url(../src/assets/img/backgroundImage.jpg);
+  background-image: url(../src/assets/Images/backgroundImage.jpg);
 }
 
 #fortag {
@@ -145,7 +145,7 @@
 
 .companyLogo {
   cursor: pointer;
-  background-image: url(../src/assets/img/varnamlogo1.png);
+  background-image: url(../src/assets/Images/varnamlogo1.png);
   width: 159px;
   height: 50px;
   margin-top: 25px;
@@ -1406,7 +1406,7 @@ h2, h3, h4, h5, h6 {
 }
 
 .banner {
-  background: url(../src/assets/img/fud.jpg) 0 0 no-repeat;
+  background: url(../src/assets/Images/fud.jpg) 0 0 no-repeat;
   background-size: cover;
   text-align: center
 }
@@ -1801,7 +1801,7 @@ h2, h3, h4, h5, h6 {
 }
 
 .ingredients-block {
-  background: url(../src/assets/img/fud.jpg) 0 0 no-repeat;
+  background: url(../src/assets/Images/fud.jpg) 0 0 no-repeat;
   background-size: cover
 }
 
@@ -1921,7 +1921,7 @@ h2, h3, h4, h5, h6 {
 }
 
 .reviews-block {
-  background: url(../src/assets/img/fud.jpg) 0 50% no-repeat;
+  background: url(../src/assets/Images/fud.jpg) 0 50% no-repeat;
   background-size: cover
 }
 

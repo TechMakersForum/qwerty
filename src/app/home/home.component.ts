@@ -33,12 +33,12 @@ export class HomeComponent implements OnInit {
         },
       }
       this.imageUrlArray = [
-        {url: "../../assets/img/slider/02.jpg",caption:"First Image"},
-        {url: "../../assets/img/slider/01.jpg",caption:"second Image"},
-        {url: "../../assets/img/slider/03.jpg",caption:"third Image"},
-        {url: "../../assets/img/slider/04.jpg",caption:"fourth Image"},
-        {url: "../../assets/img/slider/05.jpg",caption:"fifth Image"},
-        {url: "../../assets/img/slider/06.jpg",caption:"sixth Image"},
+        {url: "../../assets/Images/slider/02.jpg",caption:"First Image"},
+        {url: "../../assets/Images/slider/01.jpg",caption:"second Image"},
+        {url: "../../assets/Images/slider/03.jpg",caption:"third Image"},
+        {url: "../../assets/Images/slider/04.jpg",caption:"fourth Image"},
+        {url: "../../assets/Images/slider/05.jpg",caption:"fifth Image"},
+        {url: "../../assets/Images/slider/06.jpg",caption:"sixth Image"},
       ];
       _Router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
