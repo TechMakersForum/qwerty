@@ -24,12 +24,12 @@ export class HomeComponent implements OnInit {
     ) {
       this.userData={
         "data": {
-          "name": "",
-          "email": "",
-          "date": "",
-          "function": "",
-          "phone": "",
-          "place": ""
+          // "name": "",
+          // "email": "",
+          // "date": "",
+          // "function": "",
+          // "phone": "",
+          // "place": ""
         },
       }
       this.imageUrlArray = [
@@ -51,5 +51,9 @@ export class HomeComponent implements OnInit {
     });
      }
   ngOnInit() {
+  }
+  goToMenu(){
+    this._menuService.userDetails.data=this.userData.data;
+    this._Router.navigate(['/menu']);
   }
 }

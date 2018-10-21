@@ -17,32 +17,7 @@ export class MenuComponent implements OnInit {
 
   constructor(public _commonService:CommonService,
     public _menuService: MenuServiceService,) { 
-      this._menuService.userDetails={
-        "data": {
-          "name": "",
-          "email": "",
-          "date": "",
-          "function": "",
-          "phone": "",
-          "place": ""
-        },
-        order : {
-          WELCOMEDRINK: [],
-          SALADS: [],
-          SOUPS: [],
-          STARTERS: [],
-          FIRSTCOURSE: [],
-          BIRIYANI: [],
-          NOODLES: [],
-          RICE: [],
-          CHICKEN: [],
-          MUTTON: [],
-          BEEF: [],
-          FISH: [],
-          EGG: [],
-          VEGETABLE: []
-        }
-      };
+      
   }
 
   ngOnInit() {
@@ -50,7 +25,7 @@ export class MenuComponent implements OnInit {
     window.scrollTo(0, 0);
   }
   submitOrder(){
-    alert(JSON.stringify(this._menuService.userDetails))
+    console.log(JSON.stringify(this._menuService.userDetails))
   }
   orderItem(header,item,isOrdered){
     if(isOrdered){
