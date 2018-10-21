@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, EventEmitter,ViewChild, ElementRef,Input,Output } from '@angular/core';
 import 'setimmediate';
 import { HomeServiceService } from './home-service.service';
 import { ActivatedRoute,RouterModule, Router,NavigationEnd } from '@angular/router';
+import { MenuServiceService } from '../menu/menu-service.service';
+import { CommonService } from '../service/common.service';
 
 @Component({
   selector: 'app-home',
@@ -10,35 +12,44 @@ import { ActivatedRoute,RouterModule, Router,NavigationEnd } from '@angular/rout
 })
 export class HomeComponent implements OnInit {
 
-
-  constructor(public _homeService:HomeServiceService,
+  imageUrlArray:any;
+  userData:any;
+  constructor(
+    public _CommonService:CommonService,
+    public _homeService:HomeServiceService,
     private _Router: Router,
     public _ActivatedRoute:ActivatedRoute,
-    ) { }
-  ngOnInit() {
-    // this._homeService.sectionScroll=this._Router.url.replace('/#','')
-    this._Router.events.subscribe((evt) => {
-      if (!(evt instanceof NavigationEnd)) {
-        return;
+    private element: ElementRef,
+    public _menuService: MenuServiceService,
+    ) {
+      this.userData={
+        "data": {
+          "name": "",
+          "email": "",
+          "date": "",
+          "function": "",
+          "phone": "",
+          "place": ""
+        },
       }
-      this.doScroll();
-      this._homeService.sectionScroll= null;
+      this.imageUrlArray = [
+        {url: "../../assets/img/slider/02.jpg",caption:"First Image"},
+        {url: "../../assets/img/slider/01.jpg",caption:"second Image"},
+        {url: "../../assets/img/slider/03.jpg",caption:"third Image"},
+        {url: "../../assets/img/slider/04.jpg",caption:"fourth Image"},
+        {url: "../../assets/img/slider/05.jpg",caption:"fifth Image"},
+        {url: "../../assets/img/slider/06.jpg",caption:"sixth Image"},
+      ];
+      _Router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+            const tree = _Router.parseUrl(_Router.url);
+            if (tree.fragment) {
+	        const element = document.querySelector("#" + tree.fragment);
+	        if (element) { element.scrollIntoView(); }
+            }
+         }
     });
+     }
+  ngOnInit() {
   }
-  
-  doScroll() {
-
-    if (!this._homeService.sectionScroll) {
-      return;
-    }
-    try {
-      var elements = document.getElementById(this._homeService.sectionScroll);
-      elements.scrollIntoView();
-    }
-    finally{
-      this._homeService.sectionScroll = null;
-    }
-  } 
-
-
 }

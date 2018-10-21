@@ -3,7 +3,7 @@
                 <div class="header-inner container flex flex-column flex-row-m flex-space-between-m">
 
                         
-                          <a  href="#home"><div class="companyLogo"></div></a>
+                          <a (click)="_homeService.internalRoute('','home');"><div class="companyLogo"></div></a>
                         <input type="checkbox" id="navigation-toggle-checkbox" name="navigation-toggle-checkbox" class="navigation-toggle-checkbox sr">
                         <label for="navigation-toggle-checkbox" class="navigation-toggle-label" onclick="">
                                 <span class="navigation-toggle-label-inner">
@@ -16,10 +16,10 @@
                                         
                                         <li class="navigation-item cursor-pointer"><a (click)="_homeService.internalRoute('','about');">About</a></li>
                                         <li class="navigation-item cursor-pointer"><a (click)="_homeService.internalRoute('','services');">Our Services</a></li>
-                                        <li class="navigation-item cursor-pointer"><a routerLink="/menu">Menu</a></li>
-                                        <li class="navigation-item cursor-pointer"><a routerLink="/gallery">Gallery</a></li>
                                         <li class="navigation-item cursor-pointer"><a (click)="_homeService.internalRoute('','reservations');">Reservations</a></li>
                                         <li class="navigation-item cursor-pointer"><a (click)="_homeService.internalRoute('','reviews');">Reviews</a></li>
+                                        <li class="navigation-item cursor-pointer"><a routerLink="/menu">Menu</a></li>
+                                        <li class="navigation-item cursor-pointer"><a routerLink="/gallery">Gallery</a></li>
                                 </ul>
 
                         </div>

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { CommonService } from '../service/common.service';
 import { CollapsibleModule } from 'angular2-collapsible';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MenuServiceService } from './menu-service.service';
+
 const content = require('../../app/menulist.json');
 
 @Component({
@@ -10,37 +12,55 @@ const content = require('../../app/menulist.json');
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  ItemList
-  ItemKey=[];
-  IfitemSelect;
   allDataContent:any;
   objectKeys = Object["keys"];
-  rotateArrow: boolean = false;
-  constructor(private data:CommonService) { 
-    // this.func();
+
+  constructor(public _commonService:CommonService,
+    public _menuService: MenuServiceService,) { 
+      this._menuService.userDetails={
+        "data": {
+          "name": "",
+          "email": "",
+          "date": "",
+          "function": "",
+          "phone": "",
+          "place": ""
+        },
+        order : {
+          WELCOMEDRINK: [],
+          SALADS: [],
+          SOUPS: [],
+          STARTERS: [],
+          FIRSTCOURSE: [],
+          BIRIYANI: [],
+          NOODLES: [],
+          RICE: [],
+          CHICKEN: [],
+          MUTTON: [],
+          BEEF: [],
+          FISH: [],
+          EGG: [],
+          VEGETABLE: []
+        }
+      };
   }
 
   ngOnInit() {
     this.allDataContent=JSON.parse(JSON.stringify(content));
-    
-    console.log(this.allDataContent)
+    window.scrollTo(0, 0);
   }
-  func(){
-    this.ItemList= this.data.getData()
-    console.log("ItemList",this.ItemList);
-    for (let key in this.ItemList){
-      this.ItemKey.push(key);
-      console.log("keys",key);
+  submitOrder(){
+    alert(JSON.stringify(this._menuService.userDetails))
+  }
+  orderItem(header,item,isOrdered){
+    if(isOrdered){
+    if (this._menuService.userDetails.order[header].indexOf(item) >= 0) {
+      this._menuService.userDetails.order[header].splice(this._menuService.userDetails.order[header].indexOf(item), 1);
+    } else {
+      this._menuService.userDetails.order[header].push(item);
     }
+  } else {
+    this._menuService.userDetails.order[header].splice(this._menuService.userDetails.order[header].indexOf(item), 1);
   }
-  showlist(key){
-    console.log("key picked",key);
-    this.IfitemSelect=this.ItemList[key];
-    console.log("selected",this.ItemList[key]);
-    
-    
   }
-  
-  
-  
 }

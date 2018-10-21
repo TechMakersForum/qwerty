@@ -8,7 +8,6 @@ const content = require('../../app/menulist.json');
   providedIn: 'root'
 })
 export class CommonService {
-  about:any;
   constructor(private http:HttpClient) { }
   getData(){
     // make the call, but return the whole Observable object

@@ -6,12 +6,11 @@ import { ActivatedRoute,RouterModule, Router,NavigationEnd } from '@angular/rout
 })
 export class HomeServiceService {
   
-  sectionScroll:any;
   constructor(private _Router: Router,) { }
 
   internalRoute(routerLink,idElement){
-    this.sectionScroll=idElement;
-    this._Router.navigate([routerLink], {fragment: idElement});
+    this._Router.navigateByUrl('/DummyComponent', {skipLocationChange: true}).then(()=>
+    this._Router.navigate([routerLink], {fragment: idElement}));
   }
 
 

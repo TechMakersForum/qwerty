@@ -1,22 +1,24 @@
- 
+
 <div class="setBaseBottom food-menu-block-inner container">
-  <br>
-  <h2 class="heading">Our Menu</h2>
+    <br>
+    <h2 class="heading">Our Menu</h2>
+
+    
+  
   <div class="maindiv">
   <div class="collapseSeperate">
   <collapsible-list [type]="'accordion'" style="border: none;">
     <collapsible-list-item class="single-accordian" *ngFor="let header of objectKeys(allDataContent);">
-      <collapsible-header class="waves-effect" (click)="rotateArrow= !rotateArrow;">
+      <collapsible-header class="waves-effect">
         {{header}}
-        <!-- <i class="glyphicon glyphicon-menu-right" [ngClass]="rotateArrow?'rotateArrow':'null'"></i> -->
       </collapsible-header>
-      <collapsible-body [expanded]="rotateArrow && listedRole == 4" [ngClass]="rotateArrow && listedRole == 4 ?'single-accordion collapsed':'single-accordion'">
+        <collapsible-body class="single-accordion">
         <div class="accordion-content default">
           <div class="ac-recommendation-status">
             <ul class="ac-employees-unsorted" *ngIf="allDataContent">
-              <li class="removeDot" *ngFor="let user of allDataContent[header];let index=index">   
-                <h5 class="textHover">{{user}}</h5>
-                <input type="checkbox" class="option-input checkbox"/>
+              <li class="removeDot" *ngFor="let item of allDataContent[header];let index=index">   
+                <label class="textHover labelChange" for="{{item}}">{{item}}</label>
+                <input type="checkbox" id="{{item}}" [checked]="_menuService.userDetails.order[header].indexOf(item) >= 0" (change)="orderItem(header,item,true);" class="option-input checkbox"/>
               </li>
             </ul>
           </div>
@@ -25,20 +27,19 @@
     </collapsible-list-item>
   </collapsible-list>
 </div>
-<!-- <div class="collapseSeperate">
-  <collapsible-list [type]="'accordion'" style="border: none;">
-    <collapsible-list-item class="single-accordian" *ngFor="let header of objectKeys(allDataContent);">
-      <collapsible-header class="waves-effect" (click)="rotateArrow= !rotateArrow;">
+<div class="collapseSeperate">
+  <collapsible-list [type]="'accordion'" style="border: none;" *ngFor="let header of objectKeys(_menuService.userDetails.order);">
+    <collapsible-list-item class="single-accordian" *ngIf="_menuService.userDetails.order[header].length>0">
+      <collapsible-header class="waves-effect" *ngIf="_menuService.userDetails.order[header].length>0">
         {{header}}
-        <i class="glyphicon glyphicon-menu-right" [ngClass]="rotateArrow?'rotateArrow':'null'"></i>
       </collapsible-header>
-      <collapsible-body [expanded]="rotateArrow && listedRole == 4" [ngClass]="rotateArrow && listedRole == 4 ?'single-accordion collapsed':'single-accordion'">
+      <collapsible-body class="single-accordion" *ngIf="_menuService.userDetails.order[header].length>0">
         <div class="accordion-content default">
           <div class="ac-recommendation-status">
-            <ul class="ac-employees-unsorted" *ngIf="allDataContent">
-              <li class="removeDot" *ngFor="let user of allDataContent[header];let index=index">   
-                <h5 class="textHover">{{user}}</h5>
-                <input type="checkbox" class="option-input checkbox"/>
+            <ul class="ac-employees-unsorted" >
+              <li class="removeDot" *ngFor="let item of _menuService.userDetails.order[header];let index=index">   
+                  <label class="textHover labelChange" for="{{item}}+index">{{item}}</label>
+                  <input type="checkbox" id="{{item}}+index" (change)="orderItem(header,item,false);" class="option-input-cross checkbox"/>
               </li>
             </ul>
           </div>
@@ -46,6 +47,55 @@
       </collapsible-body>
     </collapsible-list-item>
   </collapsible-list>
-</div> -->
+</div>
+</div>
+
+<div class="reservations-form">
+    <fieldset class="reservations-form-wrap">
+<div class="row-m">
+    <div class="col-6-m pad-top-10 pad-bottom-10">
+      <label class="block strong" for="name">Name</label>
+      <input name="full-name" class="field" [(ngModel)]="_menuService.userDetails.data.name" id="name" type="text" placeholder="your name *">
+    </div>
+    <div class="col-6-m pad-top-10 pad-bottom-10">
+      <label class="block strong" for="email">Email</label>
+      <input name="email" class="field" id="email" [(ngModel)]="_menuService.userDetails.data.email" type="email" placeholder="your email *">
+    </div>
+  </div>
+  <div class="row-m">
+    <div class="col-6-m pad-top-10 pad-bottom-10">
+      <label class="block strong" for="date">Date</label>
+      <input name="date-of-booking" class="field" id="date" [(ngModel)]="_menuService.userDetails.data.date" type="text" placeholder="date *">
+    </div>
+    <div class="col-6-m pad-top-10 pad-bottom-10">
+      <label class="block strong" for="party-size">Function</label>
+      <span class="select">
+        <select class="field" name="party-size" [(ngModel)]="_menuService.userDetails.data.function" id="party-size">
+          <option value="" disabled selected>Select your option</option>
+          <option value="Wedding">Wedding</option>
+          <option value="Baptism">Baptism</option>
+          <option value="Product Launch">Product Launch</option>
+          <option value="Betrothal">Betrothal</option>
+          <option value="Event Management">Event Management</option>
+          <option value="Innagurations">Innagurations</option>
+          <option value="Birthday Party">Birthday Party</option>
+        </select>
+      </span>
+    </div>
+  </div>
+  <div class="row-m">
+  <div class="col-6-m pad-top-10 pad-bottom-10">
+      <label class="block strong" for="email">Phone no:</label>
+      <input name="phone" class="field" [(ngModel)]="_menuService.userDetails.data.phone" id="phone" type="phone" placeholder="your phone *">
+    </div>
+    <div class="col-6-m pad-top-10 pad-bottom-10">
+        <label class="block strong" for="email">Place</label>
+        <input name="place" class="field" id="place" type="place" [(ngModel)]="_menuService.userDetails.data.place" placeholder="your place *">
+      </div>
+    </div>
+    <div class="text-center">
+        <input type="submit" class="button reservations-submit" (click)="submitOrder();" value="Book now!">
+      </div>
+    </fieldset>
 </div>
 </div>

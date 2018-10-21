@@ -1,22 +1,39 @@
 <div class="headercontentavoid">
-  <div #home id="home" class="cder">
+  <!-- <div #home id="home" class="cder">
     <div class="setBaseBottom">
-    <div class="banner-inner container">
-      <h1 class="banner-lead">
-        <span class="banner-lead-1">Celebrations with Varnam</span>
-        <span class="banner-lead-2">Experience excellent and quality catering</span>
-      </h1>
-      <div class="banner-buttons">
-        <!-- <a href="#reservations" class="button button-primary">Reserve a table</a> -->
-        <a routerLink="/menu" class="button button-secondary">See our menu</a>
-           </div>
+      <div class="banner-inner container">
+        <h1 class="banner-lead">
+          <span class="banner-lead-1">Celebrations with Varnam</span>
+          <span class="banner-lead-2">Experience excellent and quality catering</span>
+        </h1>
+        <div class="banner-buttons">
+          <a routerLink="/menu" class="button button-secondary">See our menu</a>
+        </div>
+      </div>
     </div>
-  </div>
+  </div> -->
+  <div #home id="home" class="" style="position: relative;">
+    <slideshow #slideshow [imageUrls]="imageUrlArray" [height]="'100vh'" [arrowSize]="'40px'" [showArrows]="true" [autoPlay]="true"
+      [stopAutoPlayOnSlide]="false" [backgroundSize]="cover" [backgroundPosition]="'center center'" [showDots]=true [dotColor]="'#fff'"
+      [showCaptions]=true [captionColor]="'#fff'" [captionBackground]="'#847a5dbd'" [disableSwiping]=false>
+     
+    </slideshow>
+    <div *ngIf="slideshow.slideIndex==0" class="setBaseBottom" style="position: absolute;top:0;left: 140px;">
+      <div class="banner-inner container">
+        <h1 class="banner-lead">
+          <span class="banner-lead-1">Celebrations with Varnam</span>
+          <span class="banner-lead-2">Experience excellent and quality catering</span>
+        </h1>
+        <div class="banner-buttons">
+          <a routerLink="/menu" class="button button-secondary">See our menu</a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- about -->
   <div #about id="about" class="content-block about-block " style="visibility: visible;">
-    <!-- <br><br> -->
+    <br><br>
     <div class="setBaseBottom about-block-inner container">
       <div class="row-m text-center">
         <div class="about-block-content col-6-l">
@@ -68,8 +85,7 @@
               </p>
               <div class="feature-image-group flex-m flex-center-m">
                 <figure>
-                  <img class="img-fluid feature-image feature-image-1" src="../../assets/img/marriage.jpg"
-                    alt="Wheat">
+                  <img class="img-fluid feature-image feature-image-1" src="../../assets/img/marriage.jpg" alt="Wheat">
                   <figcaption>Marriage</figcaption>
                 </figure>
                 <figure>
@@ -77,7 +93,8 @@
                   <figcaption>Baptism</figcaption>
                 </figure>
                 <figure>
-                  <img class="img-fluid feature-image feature-image-1" src="../../assets/img/product-lunch-inner.jpg" alt="Wheat">
+                  <img class="img-fluid feature-image feature-image-1" src="../../assets/img/product-lunch-inner.jpg"
+                    alt="Wheat">
                   <figcaption>Product Launch</figcaption>
                 </figure>
                 <figure>
@@ -89,8 +106,7 @@
                   <figcaption>Betrothal</figcaption>
                 </figure>
                 <figure>
-                  <img class="img-fluid feature-image feature-image-1" src="../../assets/img/party.jpg"
-                    alt="Wheat">
+                  <img class="img-fluid feature-image feature-image-1" src="../../assets/img/party.jpg" alt="Wheat">
                   <figcaption>Event Management</figcaption>
                 </figure>
               </div>
@@ -102,19 +118,11 @@
     <br>
   </div>
 
-<!-- reservations -->
+  <!-- reservations -->
   <div #reservations id="reservations" class="content-block reservations-block " style="visibility: visible;height: 108vh">
     <br><br>
     <div class="reservations-block-inner container">
       <div class="setBaseBottom row-m">
-        <!-- <div class="reservation-block-img col-3-l none block-l">
-          <img class="img-fluid " src="../../assets/img/inside.jpg" alt="inside">
-        </div>
-        <div class="reservation-block-img col-6-m col-3-l none block-m">
-          <img class="img-fluid " src="../../assets/img/chicken.jpg" alt="Food">
-          <img class="img-fluid " src="../../assets/img/rice.jpg" alt="Food">
-          <img class="img-fluid " src="../../assets/img/Appam.jpg" alt="Food">
-        </div> -->
         <div class="reservation-block-form reservation-allignment">
           <div class="text-center">
             <h2 class="heading">Just the right food</h2>
@@ -128,33 +136,49 @@
               <legend class="sr">Contact Us</legend>
               <div class="row-m">
                 <div class="col-6-m pad-top-10 pad-bottom-10">
-                  <label class="block strong" for="name">Name</label>
-                  <input name="full-name" class="field" id="name" type="text" placeholder="your name *">
+                  <label class="block strong">Name</label>
+                  <input class="field" [(ngModel)]="userData.data.name" type="text" placeholder="your name *">
                 </div>
                 <div class="col-6-m pad-top-10 pad-bottom-10">
-                  <label class="block strong" for="email">Email</label>
-                  <input name="email" class="field" id="email" type="email" placeholder="your email *">
+                  <label class="block strong">Email</label>
+                  <input name="email" class="field" id="email" [(ngModel)]="userData.data.email" type="email" placeholder="your email *">
                 </div>
               </div>
               <div class="row-m">
                 <div class="col-6-m pad-top-10 pad-bottom-10">
-                  <label class="block strong" for="date">Date</label>
-                  <input name="date-of-booking" class="field" id="date" type="text" placeholder="date *">
+                  <label class="block strong">Date</label>
+                  <input name="date-of-booking" class="field" [(ngModel)]="userData.data.date" id="date" type="text" placeholder="date *">
                 </div>
                 <div class="col-6-m pad-top-10 pad-bottom-10">
-                  <label class="block strong" for="party-size">Party size</label>
+                  <label class="block strong">Function</label>
                   <span class="select">
-                    <select class="field" name="party-size" id="party-size">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
+                    <select class="field" name="party-size" [(ngModel)]="userData.data.function" id="party-size">
+                      <option value="" disabled selected>Select your option</option>
+                      <option value="Wedding">Wedding</option>
+                      <option value="Baptism">Baptism</option>
+                      <option value="Product Launch">Product Launch</option>
+                      <option value="Betrothal">Betrothal</option>
+                      <option value="Event Management">Event Management</option>
+                      <option value="Innagurations">Innagurations</option>
+                      <option value="Birthday Party">Birthday Party</option>
                     </select>
                   </span>
                 </div>
               </div>
+              <div class="row-m">
+              <div class="col-6-m pad-top-10 pad-bottom-10">
+                  <label class="block strong">Phone no:</label>
+                  <input name="phone" class="field" id="phone" [(ngModel)]="userData.data.phone" type="phone" placeholder="your phone *">
+                </div>
+                <div class="col-6-m pad-top-10 pad-bottom-10">
+                    <label class="block strong">Place</label>
+                    <input name="place" class="field" id="place" [(ngModel)]="userData.data.place" type="place" placeholder="your place *">
+                  </div>
+                </div>
               <div class="text-center">
-                <input type="submit" class="button reservations-submit" value="Book now!">
+                <input type="submit" (click)="goToMenu();" class="button reservations-submit" value="See Menu!">
               </div>
+              
             </fieldset>
           </div>
         </div>
