@@ -93,9 +93,18 @@
         <input name="place" class="field" id="place" type="place" [(ngModel)]="_menuService.userDetails.data.place" placeholder="your place *">
       </div>
     </div>
-    <div class="text-center">
-        <input type="submit" class="button reservations-submit" (click)="submitOrder();" value="Book now!">
+    <div class="text-center checkout">
+        <!-- <input type="submit" class="button reservations-submit" (click)="submitOrder();" value="Book now!"> -->
+        <button class="abc" style="background:white; border: none;">
+          <a href="https://www.instamojo.com/@techmakers/ledfc18f0805f466bac1d614ab388720e/" rel="im-checkout" data-behaviour="remote" data-style="flat" data-text="Book Now"></a>
+          
+        </button>
+       
       </div>
+    
     </fieldset>
-</div>
+    
+   
+   
+  </div>
 </div>
