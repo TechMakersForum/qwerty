@@ -6,11 +6,12 @@ import { ErrorComponent } from './error/error.component';
 import { GalleryComponent } from './gallery/gallery.component';
 
 const routes: Routes = [
+  {path:"admin",loadChildren:'../admin/admin.module#AdminModule'},
   {path: "", component: HomeComponent},
+  
   {path: "menu", component: MenuComponent},
   {path: "gallery", component: GalleryComponent},
   {path: "**", component: ErrorComponent}
-  
 ];
 
 @NgModule({
