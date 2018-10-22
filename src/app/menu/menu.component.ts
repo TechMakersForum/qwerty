@@ -25,6 +25,8 @@ export class MenuComponent implements OnInit {
     window.scrollTo(0, 0);
   }
   submitOrder(){
+    // window.open('https://www.instamojo.com/@techmakers')
+    
     console.log(JSON.stringify(this._menuService.userDetails))
   }
   orderItem(header,item,isOrdered){
