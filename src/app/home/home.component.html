@@ -13,17 +13,21 @@
     </div>
   </div> -->
   <div #home id="home" class="" style="position: relative;">
-    <slideshow #slideshow [imageUrls]="imageUrlArray" [height]="'100vh'" [arrowSize]="'40px'" [showArrows]="true" [autoPlay]="true"
+    <slideshow #slideshow [imageUrls]="imageUrlArray" [height]="'100vh'" [arrowSize]="'40px'" [showArrows]="true" [autoPlay]="false"
       [stopAutoPlayOnSlide]="false" [backgroundSize]="'cover'" [backgroundPosition]="'center center'" [showDots]=true [dotColor]="'#fff'"
       [showCaptions]=true [captionColor]="'#fff'" [captionBackground]="'#847a5dbd'" [disableSwiping]=false>
      
     </slideshow>
-    <div *ngIf="slideshow.slideIndex==0" class="setBaseBottom" style="position: absolute;top:0;left: 140px;">
-      <div class="banner-inner container">
-        <h1 class="banner-lead">
-          <span class="banner-lead-1">Celebrations with Varnam</span>
-          <span class="banner-lead-2">Experience excellent and quality catering</span>
+    <div *ngIf="slideshow.slideIndex==0" class="setBaseBottom alam" >
+      <div class="banner-inner container allignH1">
+        <div class="restinpeace">
+          <h1 class="banner-lead">
+          <span class="banner-lead-1" id="sm-head1">Celebrations with Varnam</span>
+         
+          <span class="banner-lead-2" id="sm-head2"> &nbsp;Experience excellent and quality catering</span>
         </h1>
+      </div>
+
         <div class="banner-buttons">
           <a routerLink="/menu" class="button button-secondary">See our menu</a>
         </div>
@@ -119,11 +123,11 @@
   </div>
 
   <!-- reservations -->
-  <div #reservations id="reservations" class="content-block reservations-block " style="visibility: visible;height: 108vh">
+  <div #reservations id="reservations" class="content-block reservations-block " style="visibility: visible;">
     <br><br>
     <div class="reservations-block-inner container">
       <div class="setBaseBottom row-m">
-        <div class="reservation-block-form reservation-allignment">
+        <div class="reservation-allignment">
           <div class="text-center">
             <h2 class="heading">Just the right food</h2>
             <p>

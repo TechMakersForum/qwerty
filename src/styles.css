@@ -3072,7 +3072,7 @@ h2, h3, h4, h5, h6 {
 }
 
 .customScroll{
-  /* overflow-x: scroll; */
+  overflow-x: hidden;
   overflow-y: scroll;
   /* width: 8px; */
 }

@@ -2,6 +2,34 @@
     text-align: center;
 }
 .reservation-allignment{
-    width: 80%;
-    padding-left: 233px;
+    width: 60%;
+    /* padding-left: 233px; */
+    margin:0 auto;
+}
+.alam{
+    width:100vw;
+    height: 100vh;
+    position: absolute;
+    top:0;
+    /* left: 140px; */
+}
+@media only screen and (min-width:360px) {
+    .alam{
+        position: absolute;
+        top: 0;
+        /* left:0px; */
+    }
+}
+
+@media only screen and (max-width:360px) {
+
+.allignH1{
+    /* display: none; */
+}
+#sm-head1{
+    font-size: 30px;
+}
+#sm-head2{
+    display: none;
+}
 }
