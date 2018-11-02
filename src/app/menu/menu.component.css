@@ -225,3 +225,7 @@
 .checkout{
   margin-top: 30px;
 }
+.invalidField{
+  color: red;
+  font-size: 12px;
+}

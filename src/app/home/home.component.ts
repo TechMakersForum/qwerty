@@ -4,6 +4,7 @@ import { HomeServiceService } from './home-service.service';
 import { ActivatedRoute,RouterModule, Router,NavigationEnd } from '@angular/router';
 import { MenuServiceService } from '../menu/menu-service.service';
 import { CommonService } from '../service/common.service';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +13,10 @@ import { CommonService } from '../service/common.service';
 })
 export class HomeComponent implements OnInit {
 
+  datePickerConfig:Partial<BsDatepickerConfig>;
   imageUrlArray:any;
   userData:any;
-  constructor(
+ constructor(
     public _CommonService:CommonService,
     public _homeService:HomeServiceService,
     private _Router: Router,
@@ -49,8 +51,17 @@ export class HomeComponent implements OnInit {
             }
          }
     });
-     }
+    
+    this.datePickerConfig = Object.assign({},
+      {
+        containerClass:'theme-orange',
+        showWeekNumbers:false,
+        minDate:new Date(),
+        dateInputFormat:'DD/MM/YYYY',
+    });
+   }
   ngOnInit() {
+  
   }
   goToMenu(){
     this._menuService.userDetails.data=this.userData.data;

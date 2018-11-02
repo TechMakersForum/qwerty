@@ -14,15 +14,16 @@ import { GalleryComponent } from './gallery/gallery.component';
 import {SlideshowModule} from 'ng-simple-slideshow';
 import { AuthGuard } from 'src/admin/service/auth.guard';
 import { ServiceService } from 'src/admin/service/service.service';
-
+// import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MenuComponent,
     ErrorComponent,
-    GalleryComponent,
-  ],
+    GalleryComponent
+    ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -32,7 +33,8 @@ import { ServiceService } from 'src/admin/service/service.service';
     BrowserAnimationsModule,
     SlideshowModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [AuthGuard,ServiceService],
   bootstrap: [AppComponent]

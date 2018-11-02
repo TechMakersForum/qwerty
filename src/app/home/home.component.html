@@ -38,9 +38,9 @@
   <!-- about -->
   <div #about id="about" class="content-block about-block " style="visibility: visible;">
     <br><br>
-    <div class="setBaseBottom about-block-inner container">
+    <div class="setBaseBottom about-block-inner container" style="height: 100vh;">
       <div class="row-m text-center">
-        <div class="about-block-content col-6-l">
+        <div class="about-block-content col-12-l">
           <h2 class="heading">About </h2>
           <p class="about">
             Varnam caterers is name famous for providing the best outdoor catering services in Trivandrum and through
@@ -60,11 +60,11 @@
 
           </p>
         </div>
-        <div class="about-block-img col-6-l none-m block-l">
+        <!-- <div class="about-block-img col-6-l none-m block-l">
           <img class="img-fluid" src="assets/Images/dish.png" alt="Dish of food">
           <img class="img-fluid about-chef hand" src="assets/Images/handshake1.png" alt="Chef">
 
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -136,27 +136,49 @@
             </p>
           </div>
           <div class="reservations-form">
+            <form name="form" (ngSubmit)="f.form.valid && goToMenu()" #f="ngForm" novalidate>
             <fieldset class="reservations-form-wrap">
               <legend class="sr">Contact Us</legend>
               <div class="row-m">
                 <div class="col-6-m pad-top-10 pad-bottom-10">
                   <label class="block strong">Name</label>
-                  <input class="field" [(ngModel)]="userData.data.name" type="text" placeholder="your name *">
+                  <input type="text" class="field form-control" name="name" [(ngModel)]="userData.data.name" #name="ngModel" 
+                  placeholder="your name *" minlength="3" pattern="^[a-zA-Z\s]+$" required>
+                  <div class="invalidField" *ngIf="f.submitted && name.invalid">
+                      Invalid Name
+                    </div> 
                 </div>
                 <div class="col-6-m pad-top-10 pad-bottom-10">
                   <label class="block strong">Email</label>
-                  <input name="email" class="field" id="email" [(ngModel)]="userData.data.email" type="email" placeholder="your email *">
+                  <input name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9]+\.[a-z]{2,4}$" required class="field" 
+                  id="email" [(ngModel)]="userData.data.email" #email="ngModel" type="email" placeholder="your email *">
+                  <div class="invalidField" *ngIf="f.submitted && email.invalid">
+                      Invalid Email
+                    </div>
                 </div>
-              </div>
+               </div>
               <div class="row-m">
                 <div class="col-6-m pad-top-10 pad-bottom-10">
                   <label class="block strong">Date</label>
-                  <input name="date-of-booking" class="field" [(ngModel)]="userData.data.date" id="date" type="text" placeholder="date *">
+                  <input name="date" class="field" [(ngModel)]="userData.data.date" #date="ngModel" 
+                  id="date" type="text" bsDatepicker [bsConfig]="datePickerConfig" placeholder="DD/MM/YYYY *" required>
+                  <div class="invalidField" *ngIf="f.submitted && date.invalid">
+                      Invalid Date **DD/MM/YYYY**
+                    </div>
+                    <!-- <input placeholder="Date:" class="field" id="date" name="date"
+                    [(ngModel)]="userData.data.date"
+                    [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1">
+             <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time> -->
+
+
+
+
                 </div>
                 <div class="col-6-m pad-top-10 pad-bottom-10">
                   <label class="block strong">Function</label>
                   <span class="select">
-                    <select class="field" name="party-size" [(ngModel)]="userData.data.function" id="party-size">
+                    <select class="field" name="function" [(ngModel)]="userData.data.function" #function="ngModel"
+                     id="function" required>
                       <option value="" disabled selected>Select your option</option>
                       <option value="Wedding">Wedding</option>
                       <option value="Baptism">Baptism</option>
@@ -167,23 +189,39 @@
                       <option value="Birthday Party">Birthday Party</option>
                     </select>
                   </span>
+                  <div class="invalidField" *ngIf="f.submitted && function.invalid">
+                      Select function
+                    </div>
                 </div>
               </div>
               <div class="row-m">
               <div class="col-6-m pad-top-10 pad-bottom-10">
                   <label class="block strong">Phone no:</label>
-                  <input name="phone" class="field" id="phone" [(ngModel)]="userData.data.phone" type="phone" placeholder="your phone *">
+                  <input name="phone" class="field" pattern="[0-9]{10}" [(ngModel)]="userData.data.phone" #phone="ngModel"
+                  type="text" id="phone" placeholder="your phone *" required>
+                  <div class="invalidField" *ngIf="f.submitted && phone.invalid">
+                      Invalid Phone No:
+                    </div>
                 </div>
+                   
                 <div class="col-6-m pad-top-10 pad-bottom-10">
                     <label class="block strong">Place</label>
-                    <input name="place" class="field" id="place" [(ngModel)]="userData.data.place" type="place" placeholder="your place *">
+                    <input name="place" class="field" id="place" minlength="3" pattern="^[a-zA-Z\s]+$" [(ngModel)]="userData.data.place" #place="ngModel"
+                     type="text" placeholder="your place *" required>
+                    <div class="invalidField" *ngIf="f.submitted && place.invalid">
+                        Invalid place
+                      </div>
                   </div>
                 </div>
+               
+            
+
               <div class="text-center">
-                <input type="submit" (click)="goToMenu();" class="button reservations-submit" value="See Menu!">
+                <button type="submit" class="button reservations-submit" value="See Menu!">See Menu!</button>
               </div>
               
             </fieldset>
+          </form>
           </div>
         </div>
       </div>

@@ -33,3 +33,8 @@
     display: none;
 }
 }
+
+.invalidField{
+    color: red;
+    font-size: 12px;
+}

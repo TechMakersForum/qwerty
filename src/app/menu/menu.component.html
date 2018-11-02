@@ -1,110 +1,135 @@
-
 <div class="setBaseBottom food-menu-block-inner container">
-    <br>
-    <h2 class="heading">Our Menu</h2>
+  <br>
+  <h2 class="heading">Our Menu</h2>
 
-    
-  
+
+
   <div class="maindiv">
-  <div class="collapseSeperate">
-  <collapsible-list [type]="'accordion'" style="border: none;">
-    <collapsible-list-item class="single-accordian" *ngFor="let header of objectKeys(allDataContent);">
-      <collapsible-header class="waves-effect">
-        {{header}}
-      </collapsible-header>
-        <collapsible-body class="single-accordion">
-        <div class="accordion-content default">
-          <div class="ac-recommendation-status">
-            <ul class="ac-employees-unsorted" *ngIf="allDataContent">
-              <li class="removeDot" *ngFor="let item of allDataContent[header];let index=index">   
-                <label class="textHover labelChange" for="{{item}}">{{item}}</label>
-                <input type="checkbox" id="{{item}}" [checked]="_menuService.userDetails.order[header].indexOf(item) >= 0" (change)="orderItem(header,item,true);" class="option-input checkbox"/>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </collapsible-body>
-    </collapsible-list-item>
-  </collapsible-list>
-</div>
-<div class="collapseSeperate">
-  <collapsible-list [type]="'accordion'" style="border: none;" *ngFor="let header of objectKeys(_menuService.userDetails.order);">
-    <collapsible-list-item class="single-accordian" *ngIf="_menuService.userDetails.order[header].length>0">
-      <collapsible-header class="waves-effect" *ngIf="_menuService.userDetails.order[header].length>0">
-        {{header}}
-      </collapsible-header>
-      <collapsible-body class="single-accordion" *ngIf="_menuService.userDetails.order[header].length>0">
-        <div class="accordion-content default">
-          <div class="ac-recommendation-status">
-            <ul class="ac-employees-unsorted" >
-              <li class="removeDot" *ngFor="let item of _menuService.userDetails.order[header];let index=index">   
-                  <label class="textHover labelChange" for="{{item}}+index">{{item}}</label>
-                  <input type="checkbox" id="{{item}}+index" (change)="orderItem(header,item,false);" class="option-input-cross checkbox"/>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </collapsible-body>
-    </collapsible-list-item>
-  </collapsible-list>
-</div>
-</div>
+    <div class="collapseSeperate">
+      <collapsible-list [type]="'accordion'" style="border: none;">
+        <collapsible-list-item class="single-accordian" *ngFor="let header of objectKeys(allDataContent);">
+          <collapsible-header class="waves-effect">
+            {{header}}
+          </collapsible-header>
+          <collapsible-body class="single-accordion">
+            <div class="accordion-content default">
+              <div class="ac-recommendation-status">
+                <ul class="ac-employees-unsorted" *ngIf="allDataContent">
+                  <li class="removeDot" *ngFor="let item of allDataContent[header];let index=index">
+                    <label class="textHover labelChange" for="{{item}}">{{item}}</label>
+                    <input type="checkbox" id="{{item}}" [checked]="_menuService.userDetails.order[header].indexOf(item) >= 0"
+                      (change)="orderItem(header,item,true);" class="option-input checkbox" />
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </collapsible-body>
+        </collapsible-list-item>
+      </collapsible-list>
+    </div>
+    <div class="collapseSeperate">
+      <collapsible-list [type]="'accordion'" style="border: none;" *ngFor="let header of objectKeys(_menuService.userDetails.order);">
+        <collapsible-list-item class="single-accordian" *ngIf="_menuService.userDetails.order[header].length>0">
+          <collapsible-header class="waves-effect" *ngIf="_menuService.userDetails.order[header].length>0">
+            {{header}}
+          </collapsible-header>
+          <collapsible-body class="single-accordion" *ngIf="_menuService.userDetails.order[header].length>0">
+            <div class="accordion-content default">
+              <div class="ac-recommendation-status">
+                <ul class="ac-employees-unsorted">
+                  <li class="removeDot" *ngFor="let item of _menuService.userDetails.order[header];let index=index">
+                    <label class="textHover labelChange" for="{{item}}+index">{{item}}</label>
+                    <input type="checkbox" id="{{item}}+index" (change)="orderItem(header,item,false);" class="option-input-cross checkbox" />
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </collapsible-body>
+        </collapsible-list-item>
+      </collapsible-list>
+    </div>
+  </div>
 
-<div class="reservations-form">
-    <fieldset class="reservations-form-wrap">
-<div class="row-m">
-    <div class="col-6-m pad-top-10 pad-bottom-10">
-      <label class="block strong" for="name">Name</label>
-      <input name="full-name" class="field" [(ngModel)]="_menuService.userDetails.data.name" id="name" type="text" placeholder="your name *">
-    </div>
-    <div class="col-6-m pad-top-10 pad-bottom-10">
-      <label class="block strong" for="email">Email</label>
-      <input name="email" class="field" id="email" [(ngModel)]="_menuService.userDetails.data.email" type="email" placeholder="your email *">
-    </div>
-  </div>
-  <div class="row-m">
-    <div class="col-6-m pad-top-10 pad-bottom-10">
-      <label class="block strong" for="date">Date</label>
-      <input name="date-of-booking" class="field" id="date" [(ngModel)]="_menuService.userDetails.data.date" type="text" placeholder="date *">
-    </div>
-    <div class="col-6-m pad-top-10 pad-bottom-10">
-      <label class="block strong" for="party-size">Function</label>
-      <span class="select">
-        <select class="field" name="party-size" [(ngModel)]="_menuService.userDetails.data.function" id="party-size">
-          <option value="" disabled selected>Select your option</option>
-          <option value="Wedding">Wedding</option>
-          <option value="Baptism">Baptism</option>
-          <option value="Product Launch">Product Launch</option>
-          <option value="Betrothal">Betrothal</option>
-          <option value="Event Management">Event Management</option>
-          <option value="Innagurations">Innagurations</option>
-          <option value="Birthday Party">Birthday Party</option>
-        </select>
-      </span>
-    </div>
-  </div>
-  <div class="row-m">
-  <div class="col-6-m pad-top-10 pad-bottom-10">
-      <label class="block strong" for="email">Phone no:</label>
-      <input name="phone" class="field" [(ngModel)]="_menuService.userDetails.data.phone" id="phone" type="phone" placeholder="your phone *">
-    </div>
-    <div class="col-6-m pad-top-10 pad-bottom-10">
-        <label class="block strong" for="email">Place</label>
-        <input name="place" class="field" id="place" type="place" [(ngModel)]="_menuService.userDetails.data.place" placeholder="your place *">
-      </div>
-    </div>
-    <div class="text-center checkout">
-        <!-- <input type="submit" class="button reservations-submit" (click)="submitOrder();" value="Book now!"> -->
-        <button class="abc" style="background:white; border: none;">
-          <a href="https://www.instamojo.com/@techmakers/ledfc18f0805f466bac1d614ab388720e/" rel="im-checkout" data-behaviour="remote" data-style="flat" data-text="Book Now"></a>
-          
-        </button>
-       
-      </div>
-    
-    </fieldset>
-    
-   
-   
+
+
+  <div class="reservations-form">
+    <form name="form" (ngSubmit)="f.form.valid && submitOrder()" #f="ngForm" novalidate>
+      <fieldset class="reservations-form-wrap">
+        <legend class="sr">Contact Us</legend>
+        <div class="row-m">
+          <div class="col-6-m pad-top-10 pad-bottom-10">
+            <label class="block strong">Name</label>
+            <input type="text" class="field form-control" name="name" [(ngModel)]="_menuService.userDetails.data.name"
+              #name="ngModel" placeholder="your name *" minlength="3" pattern="^[a-zA-Z\s]+$" required>
+            <div class="invalidField" *ngIf="f.submitted && name.invalid">
+              Invalid Name
+            </div>
+          </div>
+          <div class="col-6-m pad-top-10 pad-bottom-10">
+            <label class="block strong">Email</label>
+            <input name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9]+\.[a-z]{2,4}$" required class="field" id="email"
+              [(ngModel)]="_menuService.userDetails.data.email" #email="ngModel" type="email" placeholder="your email *">
+            <div class="invalidField" *ngIf="f.submitted && email.invalid">
+              Invalid Email
+            </div>
+          </div>
+        </div>
+        <div class="row-m">
+          <div class="col-6-m pad-top-10 pad-bottom-10">
+            <label class="block strong">Date</label>
+            <input name="date" class="field" [(ngModel)]="_menuService.userDetails.data.date"
+              #date="ngModel" id="date" type="text" bsDatepicker [bsConfig]="datePickerConfig" placeholder="DD/MM/YYYY *" required>
+            <div class="invalidField" *ngIf="f.submitted && date.invalid">
+              Invalid Date **DD/MM/YYYY**
+            </div>
+          </div>
+          <div class="col-6-m pad-top-10 pad-bottom-10">
+            <label class="block strong">Function</label>
+            <span class="select">
+              <select class="field" name="function" [(ngModel)]="_menuService.userDetails.data.function" #function="ngModel"
+                id="function" required>
+                <option value="" disabled selected>Select your option</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Baptism">Baptism</option>
+                <option value="Product Launch">Product Launch</option>
+                <option value="Betrothal">Betrothal</option>
+                <option value="Event Management">Event Management</option>
+                <option value="Innagurations">Innagurations</option>
+                <option value="Birthday Party">Birthday Party</option>
+              </select>
+            </span>
+            <div class="invalidField" *ngIf="f.submitted && function.invalid">
+              Select function
+            </div>
+          </div>
+        </div>
+        <div class="row-m">
+          <div class="col-6-m pad-top-10 pad-bottom-10">
+            <label class="block strong">Phone no:</label>
+            <input name="phone" class="field" pattern="[0-9]{10}" [(ngModel)]="_menuService.userDetails.data.phone"
+              #phone="ngModel" type="text" id="phone" placeholder="your phone *" required>
+            <div class="invalidField" *ngIf="f.submitted && phone.invalid">
+              Invalid Phone No:
+            </div>
+          </div>
+
+          <div class="col-6-m pad-top-10 pad-bottom-10">
+            <label class="block strong">Place</label>
+            <input name="place" class="field" id="place" minlength="3" pattern="^[a-zA-Z\s]+$" [(ngModel)]="_menuService.userDetails.data.place"
+              #place="ngModel" type="text" placeholder="your place *" required>
+            <div class="invalidField" *ngIf="f.submitted && place.invalid">
+              Invalid place
+            </div>
+          </div>
+        </div>
+        <div class="text-center checkout">
+          <button>Book Now</button>
+          <!-- <button type="submit" class="btn abc" style="background:white; border: none;">
+            <a href="https://www.instamojo.com/@techmakers/ledfc18f0805f466bac1d614ab388720e/" rel="im-checkout"
+              data-behaviour="remote" data-style="flat" data-text="Book Now"></a>
+          </button> -->
+        </div>
+      </fieldset>
+    </form>
   </div>
 </div>
