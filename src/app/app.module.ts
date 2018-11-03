@@ -16,7 +16,10 @@ import { AuthGuard } from 'src/admin/service/auth.guard';
 import { ServiceService } from 'src/admin/service/service.service';
 // import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
+// import { defineLocale } from 'ngx-bootstrap/chronos';
+// import { enGbLocale } from 'ngx-bootstrap/locale';
 
+// defineLocale('engb', enGbLocale);
 @NgModule({
   declarations: [
     AppComponent,

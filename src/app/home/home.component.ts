@@ -5,6 +5,7 @@ import { ActivatedRoute,RouterModule, Router,NavigationEnd } from '@angular/rout
 import { MenuServiceService } from '../menu/menu-service.service';
 import { CommonService } from '../service/common.service';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+// import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
   imageUrlArray:any;
   userData:any;
  constructor(
+  // private _localeService: BsLocaleService,
     public _CommonService:CommonService,
     public _homeService:HomeServiceService,
     private _Router: Router,
@@ -59,6 +61,7 @@ export class HomeComponent implements OnInit {
         minDate:new Date(),
         dateInputFormat:'DD/MM/YYYY',
     });
+    // _localeService.use('engb');
    }
   ngOnInit() {
   
