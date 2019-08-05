@@ -1,4 +1,4 @@
-<div class="headerOne">
+<div class="headerOne" [hidden]="flag">
         <div class="header">
                 <div class="header-inner container flex flex-column flex-row-m flex-space-between-m">
 
@@ -27,7 +27,7 @@
         </div>
 </div>
 <router-outlet></router-outlet>
-<div class="footer">
+<div class="footer" [hidden]="flag">
         <div class="footer-inner container">
           <div class="row-m">
             <!-- <div class="footer-column col-4-l">

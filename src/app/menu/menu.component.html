@@ -56,7 +56,7 @@
     <form name="form" (ngSubmit)="f.form.valid && submitOrder()" #f="ngForm" novalidate>
       <fieldset class="reservations-form-wrap">
         <legend class="sr">Contact Us</legend>
-        <div class="row-m">
+        <!-- <div class="row-m">
           <div class="col-6-m pad-top-10 pad-bottom-10">
             <label class="block strong">Name</label>
             <input type="text" class="field form-control" name="name" [(ngModel)]="_menuService.userDetails.data.name"
@@ -121,15 +121,52 @@
               Invalid place
             </div>
           </div>
-        </div>
-        <div class="text-center checkout">
+        </div> -->
+
+        <!-- RAZORPAY -->
+        <form action="/purchase" method="POST">
+          <!-- Note that the amount is in paise = 50 INR -->
+          <script
+              src="https://checkout.razorpay.com/v1/checkout.js"
+              data-key="<YOUR_KEY_ID>"
+              data-amount="5000"
+              data-buttontext="Pay with Razorpay"
+              data-name="Merchant Name"
+              data-description="Purchase Description"
+              data-image="https://your-awesome-site.com/your_logo.jpg"
+              data-prefill.name="Gaurav Kumar"
+              data-prefill.email="test@test.com"
+              data-theme.color="#F37254"
+          ></script>
+          <input type="hidden" value="Hidden Element" name="hidden">
+          </form>
+
+        <!-- CCAVENUE -->
+
+        <!-- <div class="text-center checkout">                 
+          <form id="ccPayment" name="ccPayment" method="post" action="ccavRequestHandler.php">
+            <h4>Fill in the form below to make your payment online.</h4>
+            <input type="text" name="tid" id="tid" value="" hidden>
+            <input type="text" name="merchant_id" value  hidden>
+            <input class="form-control" type="text" name="order_id" placeholder="Project Code" required>
+            <input class="form-control" type="text" name="amount" placeholder="Amount" required>
+            <input type="text" name="currency" value="INR" hidden>
+            <input type="text" name="redirect_url" value="http://bwdmedia.net" hidden>
+            <input type="text" name="cancel_url" value="http://bwdmedia.net" hidden>
+            <input type="text" name="language" value="EN" hidden>
+            <input class="btn btn-lg btn-default" type="submit" value="Submit">
+          </form> -->
           <button>Book Now</button>
-          <!-- <button type="submit" class="btn abc" style="background:white; border: none;">
+          
+          <!-- INSTAMOJO -->
+
+          <!-- <button type="submit" class="btn abc" style="background:white; border: none;"> 
             <a href="https://www.instamojo.com/@techmakers/ledfc18f0805f466bac1d614ab388720e/" rel="im-checkout"
-              data-behaviour="remote" data-style="flat" data-text="Book Now"></a>
-          </button> -->
-        </div>
+              data-behaviour="remote" data-style="flat" data-text="Book Now"></a> -->
+          <!-- </button> -->
+        <!-- </div> -->
       </fieldset>
     </form>
+    <button> <a href="https://invoices.razorpay.com/v1/t/inv_BAMrO0osVIdu7E"> BOOK TEST  NOW </a> </button>
   </div>
 </div>
